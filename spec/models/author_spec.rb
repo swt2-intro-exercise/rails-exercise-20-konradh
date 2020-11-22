@@ -22,5 +22,9 @@ describe Author, type: :model do
     without_last = Author.new({ first_name: "1", homepage: "2" })
     expect(without_last).to be_invalid
   end
-  
+
+  it "has many papers" do
+    author = create(:author)
+    expect(author.papers).to eq []
+  end
 end
