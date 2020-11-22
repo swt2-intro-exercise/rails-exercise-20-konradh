@@ -15,4 +15,9 @@ describe Paper, type: :model do
     paper = Paper.new({title: "A", venue: "B", year: "C"})
     expect(paper).to be_invalid
   end
+
+  it "has many authors" do
+    paper = Paper.new({title: "A", venue: "B", year: 0})
+    expect(paper.authors).to eq []
+  end
 end
