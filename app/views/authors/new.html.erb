@@ -1,4 +1,18 @@
 <%= form_with scope: :author, url: authors_path, local: true do |form| %>
+  <% if @author.errors.any? %>
+    <div>
+      <h2>
+        <%= pluralize(@author.errors.count, "error") %>
+        prohibited this author from being saved:
+      </h2>
+      <ul>
+        <% @author.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
   <p>
     <%= form.label :first_name %>
     <%= form.text_field :first_name %>
