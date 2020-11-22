@@ -1,9 +1,6 @@
 require 'rails_helper'
 
 describe "Index author page", type: :feature do
-  before :all do
-    create(:author)
-  end
 
   it "should render without error" do
     visit authors_path
