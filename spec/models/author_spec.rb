@@ -11,10 +11,17 @@ describe Author, type: :model do
     expect(@alan.homepage).to eq "http://wikipedia.de/Alan_Turing"
   end
 
-  describe Author::name do
-    it "should return the full name of the author" do
-      expect(@alan.name).to eq "Alan Turing"
-    end
+  it "have a method 'name' returning the full name of the author" do
+    expect(@alan.name).to eq "Alan Turing"
   end
 
+  it "should be valid only if it has a last name" do
+    with_last = Author.new({ last_name: "1" })
+    expect(with_last).to be_valid
+  end
+
+  it "should be invalid if it has no last name" do
+    without_last = Author.new({ first_name: "1", homepage: "2" })
+    expect(without_last).to be_invalid
+  end
 end
