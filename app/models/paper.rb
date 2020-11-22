@@ -5,4 +5,9 @@ class Paper < ApplicationRecord
 
   has_and_belongs_to_many :authors
 
+  scope :year, ->(year) { if not year.nil?
+                            where(year: year)
+                          else
+                            all
+                          end }
 end
