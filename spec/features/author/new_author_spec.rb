@@ -29,6 +29,25 @@ describe "New author page", type: :feature do
 
       expect(Author.count).to eq authors_count + 1
     end
+
+    it "should indicate success if the entered data was valid" do
+      visit new_author_path
+      page.fill_in "author[first_name]", with: @alan.first_name
+      page.fill_in "author[homepage]", with: @alan.homepage
+      find("input[type=submit]").click
+
+      expect(page).to have_content /error/i
+    end
+
+    it "should error if the entered data was invalid" do
+      visit new_author_path
+      page.fill_in "author[first_name]", with: @alan.first_name
+      page.fill_in "author[last_name]", with: @alan.last_name
+      page.fill_in "author[homepage]", with: @alan.homepage
+      find("input[type=submit]").click
+
+      expect(page).to have_content /success/i
+    end
   end
 
 end
