@@ -28,7 +28,7 @@ describe "Index author page", type: :feature do
   it "should have edit links for all authors" do
     visit authors_path
     Author.all.each do |author|
-      expect(page).to have_link("Edit", href: edit_author_path(author))
+      expect(page).to have_link("edit", href: edit_author_path(author))
     end
   end
 end
