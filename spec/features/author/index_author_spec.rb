@@ -37,8 +37,8 @@ describe "Index author page", type: :feature do
   end
 
   it "deletes an author from the database if the delete link is clicked" do
-    visit authors_path
     create(:author)
+    visit authors_path
     authors_count = Author.count
     find("a[href='#{author_path(Author.first)}'][data-method='delete']").click
     expect(Author.count).to eq authors_count - 1
