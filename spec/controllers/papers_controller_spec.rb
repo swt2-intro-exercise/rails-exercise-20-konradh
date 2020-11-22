@@ -29,17 +29,23 @@ RSpec.describe PapersController, type: :controller do
   # Paper. As you add validations to Paper, be sure to
   # adjust the attributes here as well.
   let(:valid_attributes) {
-    skip("Add a hash of attributes valid for your model")
+    {
+        title: "Awesome Paper"
+    }
   }
 
   let(:invalid_attributes) {
-    skip("Add a hash of attributes invalid for your model")
+    {
+        title: ""
+    }
   }
 
   # This should return the minimal set of values that should be in the session
   # in order to pass any filters (e.g. authentication) defined in
   # PapersController. Be sure to keep this updated too.
-  let(:valid_session) { {} }
+  let(:valid_session) { {
+
+  } }
 
   describe "GET #index" do
     it "returns a success response" do
@@ -97,14 +103,18 @@ RSpec.describe PapersController, type: :controller do
   describe "PUT #update" do
     context "with valid params" do
       let(:new_attributes) {
-        skip("Add a hash of attributes valid for your model")
+        {
+            title: "Awesome Other Paper",
+            venue: "HPI",
+            year: 2020
+        }
       }
 
       it "updates the requested paper" do
         paper = Paper.create! valid_attributes
         put :update, params: {id: paper.to_param, paper: new_attributes}, session: valid_session
         paper.reload
-        skip("Add assertions for updated state")
+        expect(paper.title).to eq new_attributes[:title]
       end
 
       it "redirects to the paper" do
