@@ -10,4 +10,9 @@ describe Paper, type: :model do
     paper = create(:paper)
     expect(paper).to be_valid
   end
+
+  it "is invalid if the year is not an integer" do
+    paper = Paper.new({title: "A", venue: "B", year: "C"})
+    expect(paper).to be_invalid
+  end
 end
