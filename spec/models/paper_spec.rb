@@ -1,5 +1,13 @@
 require 'rails_helper'
 
-RSpec.describe Paper, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+describe Paper, type: :model do
+  it "is not valid without title, venue and year" do
+    paper = Paper.new({})
+    expect(paper).to be_invalid
+  end
+
+  it "is valid if all attributes are present" do
+    paper = create(:paper)
+    expect(paper).to be_valid
+  end
 end

@@ -30,7 +30,9 @@ RSpec.describe PapersController, type: :controller do
   # adjust the attributes here as well.
   let(:valid_attributes) {
     {
-        title: "Awesome Paper"
+        title: "Awesome Paper",
+        venue: "HPI",
+        year: 2020
     }
   }
 
