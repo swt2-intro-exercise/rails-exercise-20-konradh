@@ -1,6 +1,7 @@
-<%= form_with scope: :author, url: authors_path, local: true do |form| %>
+<%= form_with model: @author, local: true do |form| %>
 
-  <h1>Create new author</h1>
+  <h1>Edit <%= @author.name %></h1>
+
   <% if @author.errors.any? %>
     <div>
       <h2>
